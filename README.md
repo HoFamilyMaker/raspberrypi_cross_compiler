@@ -1,4 +1,4 @@
-# raspberrypi
+# raspberrypi cross compiler
 configured raspberrypi cross compile toolchain based on host computer (Ubuntu 16.04) raspberrypi 1 <br />
 
 # Prerequisites <br />
@@ -17,14 +17,14 @@ on raspberrypi :  <br />
 
 # Setup Cross Compiler
 cd ~/ <br />
-git clone <br />
+git clone https://github.com/sammysun0711/raspberrypi_cross_compiler.git <br />
 
 in terminal: create the following symlinks: <br />
 ln -s $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/lib/arm-linux-gnueabihf $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/lib/arm-linux-gnueabihf/4.9.3
 <br />
 ln -s $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/lib/arm-linux-gnueabihf $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/lib/arm-linux-gnueabihf/4.9.3
 <br />
-# Example(hier we have already compile)
+# Example(already compiled)
 # cross compile boost
 download newest boost library(boost_1_66_0.tar.bz2) <br />
 tar --bzip2 -xf /path/to/boost_1_66_0.tar.bz2 <br />
