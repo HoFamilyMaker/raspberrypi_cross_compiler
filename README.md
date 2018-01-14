@@ -1,4 +1,5 @@
-raspberrypi cross compile tool based on rasberrypi 1 and raspberrypi/tools 
+# raspberrypi
+configured raspberrypi cross compile toolchain based on host computer (Ubuntu 16.04) raspberrypi 1
 
 more information : https://github.com/raspberrypi/tools
 reference:
@@ -75,4 +76,5 @@ scp PiNet pi@10.42.0.212:/home/pi/PiNet/build
 (default password:raspberry)
 # test output of PiNet
 ssh pi@10.42.0.212 ./PiNet/build/PiNet
+
 
