@@ -29,8 +29,8 @@ ln -s $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linu
 download newest boost library(boost_1_58_0.tar.bz2) <br />
 tar --bzip2 -xf /path/to/boost_1_58_0.tar.bz2 <br />
 ./bootstrap.sh --prefix=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local <br />
-nano ~/user-config.jam
-        using gcc : arm : arm-linux-gnueabihf-g++ ;
+nano ~/user-config.jam <br />
+        using gcc : arm : arm-linux-gnueabihf-g++ ;  <br />
 ./b2 --with-atomic --with-chrono --with-date_time --with-filesystem --with-regex --with-serialization --with-thread --with-system --no-samples --no-tests toolset=gcc-arm link=static cxxflags=-fPIC <br />
 ./b2 install <br />
 rm ~/user-config.jam
