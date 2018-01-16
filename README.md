@@ -41,7 +41,7 @@ Download OpenSSL and extract it <br />
 wget https://www.openssl.org/source/openssl-1.0.2l.tar.gz <br />
 tar xzf openssl-1.0.2n.tar.gz <br />
 cd openssl-1.0.2n <br />
-./Configure --prefix=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr os/compiler:arm-linux-gnueabihf <br />
+./Configure --prefix=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local os/compiler:arm-linux-gnueabihf <br />
 make CC="arm-linux-gnueabihf-gcc" AR="arm-linux-gnueabihf-ar r" RANLIB="arm-linux-gnueabihf-ranlib" <br />
 sudo make install <br />
 
@@ -51,7 +51,7 @@ tar xzf cpp-netlib 0.12.0-final.tar.gz <br />
 cd cpp-netlib <br />
 mkdir build <br />
 cd build <br />
-cmake prefix=arm-linux-gnueabihf- path=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/bin -DCMAKE_TOOLCHAIN_FILE=$HOME/raspberrypi/pi.cmake -DOPENSSL_ROOT_DIR=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local/ssl -DCMAKE_SKIP_BUILD_RPATH=FALSE -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE -DCMAKE_INSTALL_PREFIX:PATH=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ../ <br />
+cmake prefix=arm-linux-gnueabihf- path=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/bin -DCMAKE_TOOLCHAIN_FILE=$HOME/raspberrypi/pi.cmake -DOPENSSL_ROOT_DIR=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local/ssl -DCMAKE_SKIP_BUILD_RPATH=FALSE -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE -DCMAKE_INSTALL_PREFIX:PATH=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ../ <br />
 make <br />
 sudo make install <br />
 
