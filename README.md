@@ -51,7 +51,7 @@ tar xzf cpp-netlib 0.12.0-final.tar.gz <br />
 cd cpp-netlib <br />
 mkdir build <br />
 cd build <br />
-cmake prefix=arm-linux-gnueabihf- path=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/bin -DCMAKE_TOOLCHAIN_FILE=$HOME/raspberrypi/pi.cmake -DOPENSSL_ROOT_DIR=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local/ssl -DCMAKE_SKIP_BUILD_RPATH=FALSE -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE -DCMAKE_INSTALL_PREFIX:PATH=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ../ <br />
+cmake prefix=arm-linux-gnueabihf- path=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/bin -DCMAKE_TOOLCHAIN_FILE=$HOME/raspberrypi/pi.cmake -DOPENSSL_ROOT_DIR=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local/ssl -DCMAKE_SKIP_BUILD_RPATH=FALSE -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE -DCMAKE_INSTALL_PREFIX:PATH=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ../cpp-netlib <br />
 make <br />
 sudo make install <br />
 
