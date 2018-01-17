@@ -98,10 +98,10 @@ configured raspberrypi cross compile toolchain based on host computer (Ubuntu 16
 	ssh pi@10.42.0.212 ./PiNet/build/PiNet
 
 ## more detail information see reference:
-[1]https://github.com/raspberrypi/tools <br />
-[2]https://github.com/Yadoms/yadoms/wiki/Cross-compile-for-raspberry-PI <br />
-[3]http://blog.shahada.abubakar.net/post/raspberry-pi-software-development-with-a-cross-compiler 
-[4]https://github.com/raspberrypi/tools/issues/50<br />
-[5]https://medium.com/@au42/the-useful-raspberrypi-cross-compile-guide-ea56054de187 <br />
-[6]https://stackoverflow.com/questions/21113434/error-cross-compiling-cpp-netlib-for-raspbian <br /
-[7]https://stackoverflow.com/questions/16040128/hook-up-raspberry-pi-via-ethernet-to-laptop-without-router
+[1] https://github.com/raspberrypi/tools <br />
+[2] https://github.com/Yadoms/yadoms/wiki/Cross-compile-for-raspberry-PI <br />
+[3] http://blog.shahada.abubakar.net/post/raspberry-pi-software-development-with-a-cross-compiler <br />
+[4] https://github.com/raspberrypi/tools/issues/50 <br />
+[5] https://medium.com/@au42/the-useful-raspberrypi-cross-compile-guide-ea56054de187 <br />
+[6] https://stackoverflow.com/questions/21113434/error-cross-compiling-cpp-netlib-for-raspbian <br />
+[7] https://stackoverflow.com/questions/16040128/hook-up-raspberry-pi-via-ethernet-to-laptop-without-router <br />
