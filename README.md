@@ -38,7 +38,7 @@ configured raspberrypi cross compile toolchain based on host computer (Ubuntu 16
 	
 	sudo ln -s $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/lib/arm-linux-gnueabihf $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/lib/arm-linux-	gnueabihf/4.9.3
 
-## Example(already compiled)
+## Example
 ### cross compile boost
  
 	download newest boost library(boost_1_66_0.tar.bz2)
