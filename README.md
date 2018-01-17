@@ -1,101 +1,101 @@
 # raspberrypi cross compiler
-configured raspberrypi cross compile toolchain based on host computer (Ubuntu 16.04) raspberrypi 1 <br />
+configured raspberrypi cross compile toolchain based on host computer (Ubuntu 16.04) raspberrypi 1 
 
-## Prerequisites <br />
-### on raspberrypi :  <br />
-	sudo apt-get update <br />
-    	sudo apt-get upgrade <br />
-    	sudo apt-get -y install libboost-all-dev <br />
-    	sudo apt-get -y install libtinyxml2-dev  <br />
-    	sudo apt-get -y install libi2c-dev <br />
-    	sudo apt-get -y install libsqlite3-dev <br />
-    	sudo apt-get -y install libcgicc5-dev <br />
-    	sudo apt-get -y install libcurl4-openssl-dev <br /> 
-    	sudo apt-get -y install libfcgi-dev <br />
-    	sudo apt-get -y install libpcre++-dev <br />
-    	sudo apt-get -y install wiringpi <br />
+## Prerequisites 
+### on raspberrypi : 
+	sudo apt-get update 
+    	sudo apt-get upgrade 
+    	sudo apt-get -y install libboost-all-dev 
+    	sudo apt-get -y install libtinyxml2-dev  
+    	sudo apt-get -y install libi2c-dev 
+    	sudo apt-get -y install libsqlite3-dev 
+    	sudo apt-get -y install libcgicc5-dev 
+    	sudo apt-get -y install libcurl4-openssl-dev  
+    	sudo apt-get -y install libfcgi-dev 
+    	sudo apt-get -y install libpcre++-dev 
+    	sudo apt-get -y install wiringpi 
 ### install raspidjson on raspberrypi (cross compile not very easy...)  
-    	git clone https://github.com/Tencent/rapidjson.git <br />
-    	cd rapidjson <br />
-    	git submodule update --init <br />
-    	mkdir build <br />
-    	cd build <br />
-    	cmake ../ <br />
-    	make <br />
-    	sudo make install <br />
-	
+    	git clone https://github.com/Tencent/rapidjson.git 
+    	cd rapidjson 
+    	git submodule update --init 
+    	mkdir build 
+    	cd build 
+    	cmake ../ 
+    	make 
+    	sudo make install 	
 
 ## Setup Cross Compiler
-	cd ~/ <br />
-	git clone https://github.com/sammysun0711/raspberrypi.git <br />
-	cd raspberrypi <br />
-	git clone https://github.com/raspberrypi/tools <br />
+	cd ~/ 
+	git clone https://github.com/sammysun0711/raspberrypi.git 
+	cd raspberrypi 
+	git clone https://github.com/raspberrypi/tools
 
 ### get /usr /lib /opt file via rsync from raspberrypi 
-	sudo rsync -rl --delete-after --safe-links pi@10.42.0.212:/{opt,lib,usr} $HOME/raspberrypi/tools/arm-bcm2708/arm-		rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot <br />
+	sudo rsync -rl --delete-after --safe-links pi@10.42.0.212:/{opt,lib,usr} $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot
 
-### create the following symlinks: <br />
-	sudo ln -s $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/lib/arm-		linux-gnueabihf $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/lib		/arm-linux-gnueabihf/4.9.3 <br />
-
-	sudo ln -s $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/lib/arm-linux-		gnueabihf $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/lib/arm-linux-		gnueabihf/4.9.3 <br />
+### create the following symlinks:
+	sudo ln -s $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/lib/arm-	linux-gnueabihf $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/lib/arm-linux-gnueabihf/4.9.3
+	
+	sudo ln -s $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/lib/arm-linux-gnueabihf $HOME/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/lib/arm-linux-	gnueabihf/4.9.3
 
 ## Example(already compiled)
 ### cross compile boost
  
-	download newest boost library(boost_1_66_0.tar.bz2) <br />
-	tar --bzip2 -xf /path/to/boost_1_66_0.tar.bz2 <br />
-	sudo su -m <br />
-	./bootstrap.sh --prefix=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf		/sysroot/usr/local <br />
-	nano ~/user-config.jam <br />
-        using gcc : arm : arm-linux-gnueabihf-g++ ;  <br />
+	download newest boost library(boost_1_66_0.tar.bz2)
+	tar --bzip2 -xf /path/to/boost_1_66_0.tar.bz2
+	sudo su -m
+	./bootstrap.sh --prefix=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf	/sysroot/usr/local
+	nano ~/user-config.jam
+        using gcc : arm : arm-linux-gnueabihf-g++ ; 
 ### simple version
 
-	./b2 --with-atomic --with-chrono --with-date_time --with-filesystem --with-regex --with-serialization --with-thread 		--with-system --no-samples --no-tests toolset=gcc-arm link=static cxxflags=-fPIC install  <br />
+	./b2 --with-atomic --with-chrono --with-date_time --with-filesystem --with-regex --with-serialization --with-thread 	--with-system --no-samples --no-tests toolset=gcc-arm link=static cxxflags=-fPIC install
 
 ### install all 
-	./b2 toolset=gcc-arm install <br />
-	exit <br />
-	rm ~/user-config.jam <br />
+	./b2 toolset=gcc-arm install
+	exit 
+	rm ~/user-config.jam
 
 ### cross compile OpenSSL 1.0.2n
 
-	Download OpenSSL and extract it <br />
-    	Version 1.0.x is working. <br />
-    	Version 1.1.x is not working well, not use !!!<br />
-	wget https://www.openssl.org/source/openssl-1.0.2l.tar.gz <br />
-	tar xzf openssl-1.0.2n.tar.gz <br />
-	cd openssl-1.0.2n <br />
-	./Configure --prefix=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf		/sysroot/usr/local os/compiler:arm-linux-gnueabihf <br />
-	make CC="arm-linux-gnueabihf-gcc" AR="arm-linux-gnueabihf-ar r" RANLIB="arm-linux-gnueabihf-ranlib" <br />
-	sudo make install <br />
+	Download OpenSSL and extract it
+    	Version 1.0.x is working.
+    	Version 1.1.x is not working well, not use !!!
+	wget https://www.openssl.org/source/openssl-1.0.2l.tar.gz
+	tar xzf openssl-1.0.2n.tar.gz
+	cd openssl-1.0.2n
+	./Configure --prefix=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf		/sysroot/usr/local os/compiler:arm-linux-gnueabihf
+	make CC="arm-linux-gnueabihf-gcc" AR="arm-linux-gnueabihf-ar r" RANLIB="arm-linux-gnueabihf-ranlib"
+	sudo make install
 
 ### cross compile cpp-netlib
 
-	download cpp-netlib 0.12.0-final.tar.gz (cpp-netib 0.13.0 is not stable now, not use!) <br />
-	tar xzf cpp-netlib 0.12.0-final.tar.gz <br />
-	cd cpp-netlib <br />
-	mkdir build <br />
-	cd build <br />
-	cmake -DCMAKE_TOOLCHAIN_FILE=$HOME/raspberrypi/pi.cmake -DOPENSSL_ROOT_DIR=/home/sammysun/raspberrypi/tools/arm-bcm2708		/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local/ssl -DBOOST_ROOT_DIR=/home/sammysun/raspberrypi		/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local/include 					-DCMAKE_SKIP_BUILD_RPATH=FALSE -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE -DCMAKE_INSTALL_PREFIX:PATH=/home/sammysun		/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local 				-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ../cpp-netlib <br />
-	make <br />
-	sudo make install <br />
+	download cpp-netlib 0.12.0-final.tar.gz (cpp-netib 0.13.0 is not stable now, not use!) 
+	tar xzf cpp-netlib 0.12.0-final.tar.gz 
+	cd cpp-netlib 
+	mkdir build 
+	cd build 
+	cmake -DCMAKE_TOOLCHAIN_FILE=$HOME/raspberrypi/pi.cmake -DOPENSSL_ROOT_DIR=/home/sammysun/raspberrypi/tools/arm-bcm270/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local/ssl -DBOOST_ROOT_DIR=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local/include -DCMAKE_SKIP_BUILD_RPATH=FALSE -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE -DCMAKE_INSTALL_PREFIX:PATH=/home/sammysun/raspberrypi/tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/usr/local -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ../cpp-netlib 
+	make
+	sudo make install
 
 ### cross compile PiNet
 
-	cd ~/PiNet <br />
-	mkdir raspberrypi_build <br />
-	cd raspberrypi_build <br />
-	cmake -DCMAKE_TOOLCHAIN_FILE=$HOME/raspberrypi/pi.cmake  ../src  <br />
-	P.s. if we get error wenn cross compile PiNet cpp-netlib/include/boost/network/uri/builder.hpp:9:10: fatal error: 		'asio/ip/address.hpp' file not found
-	Manually copying $SRCDIR/deps/asio/asio/include/asio to $CMAKE_INSTALL_PREFIX/include/asio fixes the problem. <br />
-	make <br />
+	cd ~/PiNet
+	mkdir raspberrypi_build
+	cd raspberrypi_build
+	cmake -DCMAKE_TOOLCHAIN_FILE=$HOME/raspberrypi/pi.cmake  ../src 
+	make
+	P.s. if we get error wenn cross compile PiNet cpp-netlib/include/boost/network/uri/builder.hpp:9:10: fatal error: 	'asio/ip/address.hpp' file not found
+	Manually copying $SRCDIR/deps/asio/asio/include/asio to $CMAKE_INSTALL_PREFIX/include/asio fixes the problem. 
+	
 
 ## secure copy built PiNet to raspberrypi 
 
-	scp PiNet pi@10.42.0.212:/home/pi/PiNet/build <br />
+	scp PiNet pi@10.42.0.212:/home/pi/PiNet/build
 	(default password:raspberry)
 ## test output of PiNet
-	ssh pi@10.42.0.212 ./PiNet/build/PiNet <br />
+	ssh pi@10.42.0.212 ./PiNet/build/PiNet
 
 ## more detail information see reference:
 [1]https://github.com/raspberrypi/tools <br />
