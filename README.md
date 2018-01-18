@@ -2,7 +2,7 @@
 configured raspberrypi cross compile toolchain based on host computer (Ubuntu 16.04) raspberrypi 1 
 
 ## Prerequisites 
-### on raspberrypi : 
+### on raspberrypi : <br />
 	sudo apt-get update 
     	sudo apt-get upgrade 
     	sudo apt-get -y install libboost-all-dev 
