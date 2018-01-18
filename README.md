@@ -4,25 +4,25 @@ configured raspberrypi cross compile toolchain based on host computer (Ubuntu 16
 ## Prerequisites 
 ### on raspberrypi
 	sudo apt-get update 
-    	sudo apt-get upgrade 
-    	sudo apt-get -y install libboost-all-dev 
-    	sudo apt-get -y install libtinyxml2-dev  
-    	sudo apt-get -y install libi2c-dev 
-    	sudo apt-get -y install libsqlite3-dev 
-    	sudo apt-get -y install libcgicc5-dev 
-    	sudo apt-get -y install libcurl4-openssl-dev  
-    	sudo apt-get -y install libfcgi-dev 
-    	sudo apt-get -y install libpcre++-dev 
-    	sudo apt-get -y install wiringpi 
+	sudo apt-get upgrade 
+	sudo apt-get -y install libboost-all-dev 
+	sudo apt-get -y install libtinyxml2-dev  
+	sudo apt-get -y install libi2c-dev 
+	sudo apt-get -y install libsqlite3-dev 
+	sudo apt-get -y install libcgicc5-dev 
+	sudo apt-get -y install libcurl4-openssl-dev  
+	sudo apt-get -y install libfcgi-dev 
+	sudo apt-get -y install libpcre++-dev 
+	sudo apt-get -y install wiringpi 
 ### install raspidjson on raspberrypi (cross compile not very easy...)  
-    	git clone https://github.com/Tencent/rapidjson.git 
-    	cd rapidjson 
-    	git submodule update --init 
-    	mkdir build 
-    	cd build 
-    	cmake ../ 
-    	make 
-    	sudo make install 	
+	git clone https://github.com/Tencent/rapidjson.git 
+	cd rapidjson 
+	git submodule update --init 
+	mkdir build 
+	cd build 
+	cmake ../ 
+	make 
+	sudo make install 	
 
 ## Setup Cross Compiler
 	cd ~/ 
